@@ -215,9 +215,9 @@ def run_demos() -> None:
         print("FrozenInstanceError:", error)
 
     # frozen=True also makes Station hashable when all of its fields are hashable.
-# That is useful here because Station objects can be placed in a set,
-# which lets Python remove duplicate stations with the same values.
-station_set = {station_a, station_b, station_c}
+    # That is useful here because Station objects can be placed in a set,
+    # which lets Python remove duplicate stations with the same values.
+    station_set = {station_a, station_b, station_c}
     print("Station set length:", len(station_set))
 
     batch = StationBatch("Upstate")
