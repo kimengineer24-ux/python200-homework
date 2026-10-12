@@ -274,6 +274,10 @@ def run_demos() -> None:
         for item in error.errors():
             print("loc:", item["loc"], "msg:", item["msg"])
 
+    # This reported 3 errors: station_id was too short, timestamp was missing,
+    # and temperature_c was not numeric. Reporting all errors at once is more
+    # useful than stopping at the first because I can fix everything in one pass.
+
     try:
         Reading(
             station_id="STN001",
