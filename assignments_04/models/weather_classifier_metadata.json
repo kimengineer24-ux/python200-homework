@@ -1,0 +1,18 @@
+{
+  "python_version": "3.12.1",
+  "scikit_learn_version": "1.9.1",
+  "features": [
+    "temperature_2m_max",
+    "temperature_2m_min",
+    "precipitation_sum",
+    "wind_speed_10m_max"
+  ],
+  "label_rule": "good=1 when high is 7-26 C inclusive, low >= 0 C, precipitation < 3 mm, and wind < 30 km/h; otherwise 0",
+  "city": "Spartanburg, South Carolina",
+  "model": "KNN (k=1)",
+  "test_accuracy": 0.9315068493150684,
+  "test_f1": 0.9152542372881356,
+  "training_days": 292,
+  "test_days": 73,
+  "best_k": 1
+}
