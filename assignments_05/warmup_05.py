@@ -241,7 +241,17 @@ try:
         print("Ollama notes:", result.stderr)
 except (FileNotFoundError, subprocess.TimeoutExpired) as error:
     print("\nOllama could not run:", error)
+# Compare the same prompt using the OpenAI API.
+openai_response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {"role": "user", "content": ollama_prompt}
+    ],
+    temperature=0.7,
+    max_completion_tokens=150
+)
 
+print("\nOpenAI response:", openai_response.choices[0].message.content)
 
 # Ollama output will be added here after the local model runs.
 # Local models offer more privacy and offline access, but may have

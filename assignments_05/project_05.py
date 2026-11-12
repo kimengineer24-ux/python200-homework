@@ -72,7 +72,11 @@ Bullet points:--- BEGIN USER BULLET POINTS ---
         # --- Task 3: Cover Letter Generator ---
 
 def generate_cover_letter(job_title: str, background: str) -> str:
-    messages = [
+    # These examples demonstrate different job roles and backgrounds.
+    # Few-shot examples guide the model's tone, structure, and level of detail
+    # without allowing it to invent qualifications.
+
+   messages = [
         {
             "role": "system",
             "content": (
@@ -124,10 +128,13 @@ def generate_cover_letter(job_title: str, background: str) -> str:
                 "Write a tailored 3-5 sentence cover letter opening."
             )
         }
-    ]
+   ]
 
-    response = get_completion(messages)
-    return response.strip()
+   response = get_completion(messages)
+   return response.strip()
+
+
+
 
     # --- Task 4: Content Moderation ---
 
@@ -214,7 +221,35 @@ def run_chatbot():
             "role": "assistant",
             "content": reply
         })
+# --- Task 2: Bullet Rewriter Test ---
+print("\n--- Testing Bullet Rewriter ---")
+test_bullets = [
+    "Helped customers with their problems.",
+    "Organized files and updated records."
+]
+rewrite_bullets(test_bullets)
 
+
+# --- Task 3: Cover Letter Generator Test ---
+print("\n--- Testing Cover Letter Generator ---")
+test_letter = generate_cover_letter(
+    "Administrative Assistant",
+    "Experience organizing files, updating records, and helping customers."
+)
+print(test_letter)
+
+
+# --- Task 4: Content Moderation Tests ---
+print("\n--- Testing Content Moderation ---")
+print("Safe input:", is_safe("I enjoy helping people solve problems."))
+print("Flagged input:", is_safe("I will kill someone."))
+
+
+# --- Task 6: Ethics Reflection ---
+# AI can produce inaccurate or biased suggestions, so users must
+# review its output and verify that it represents their real experience.
+# Users should also protect personal information and avoid sharing
+# sensitive data with AI tools.
 
 if __name__ == "__main__":
     run_chatbot()
