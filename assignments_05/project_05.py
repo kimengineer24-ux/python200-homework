@@ -227,8 +227,9 @@ test_bullets = [
     "Helped customers with their problems.",
     "Organized files and updated records."
 ]
-rewrite_bullets(test_bullets)
 
+# The original bullets are vague and lack measurable impact. The model improves them with stronger action verbs, clearer details, and more results-focused language without inventing facts.rewrite_bullets(test_bullets)
+rewrite_bullets(test_bullets)
 
 # --- Task 3: Cover Letter Generator Test ---
 print("\n--- Testing Cover Letter Generator ---")
@@ -246,10 +247,10 @@ print("Flagged input:", is_safe("I will kill someone."))
 
 
 # --- Task 6: Ethics Reflection ---
-# AI can produce inaccurate or biased suggestions, so users must
-# review its output and verify that it represents their real experience.
-# Users should also protect personal information and avoid sharing
-# sensitive data with AI tools.
+# AI tools can reflect biases in their training data and may favor certain communication styles over others.
+# If someone submits AI-generated content without reviewing it, inaccurate information or exaggerated qualifications could misrepresent their experience.
+# A useful guardrail would be requiring users to review and approve all AI-generated suggestions before using them.
+# Users should also be reminded to protect their personal information.
 
 if __name__ == "__main__":
     run_chatbot()
