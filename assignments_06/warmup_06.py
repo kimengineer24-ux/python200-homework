@@ -1,7 +1,10 @@
 from dotenv import load_dotenv
 import os
 import string
-
+from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, Settings
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.llms.openai import OpenAI
+from llama_index.core.evaluation import FaithfulnessEvaluator, RelevancyEvaluator
 if load_dotenv():
     print("API key loaded successfully.")
 else:
@@ -132,7 +135,7 @@ docs_dir = "../python-200-v1/lessons/06_AI_augmentation/resources/brightleaf_pdf
 docs = SimpleDirectoryReader(docs_dir).load_data()
 
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
-
+Settings.llm = OpenAI(model="gpt-4o-mini")
 index = VectorStoreIndex.from_documents(docs)
 
 query_engine = index.as_query_engine(similarity_top_k=3)
