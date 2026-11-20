@@ -52,3 +52,34 @@ for question in questions:
         print("Document:", node.node.metadata.get("file_name"))
         print("Similarity score:", node.score)
         print("Retrieved text:", node.node.get_content()[:200])    
+
+# Step 4 Reflection:
+# The assistant sounded confident when the documents contained relevant information.
+# When information was missing, it could not provide a supported answer.
+# I was surprised that retrieval could return information that did not fully answer a question.
+
+# Step 5: Find a Failure
+hard_question = "What is Groundwork Coffee's exact annual revenue and profit margin?"
+
+print("\nStep 5: Failure Test")
+print("Question:", hard_question)
+
+failure_response = query_engine.query(hard_question)
+
+print("Full Response:", failure_response)
+
+for i, node in enumerate(failure_response.source_nodes, start=1):
+    print(f"\nSource {i}:")
+    print("Document:", node.node.metadata.get("file_name"))
+    print("Score:", node.score)
+    print("Retrieved text:", node.node.get_content())
+
+# The documents do not contain exact revenue or profit figures.
+# The retriever may return unrelated information, showing how RAG
+# can struggle when the source documents do not contain the answer.
+
+# Step 6: Final Reflection
+# LlamaIndex requires fewer lines than building a RAG pipeline manually
+# because it handles document loading, embeddings, indexing, and retrieval.
+# Another use case would be a school answering questions using its handbooks and policies.
+# RAG can fail when documents are missing, outdated, or irrelevant to the question.

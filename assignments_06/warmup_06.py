@@ -152,7 +152,12 @@ for question in questions:
 
     for node in response.source_nodes:
         print("Score:", node.score)
-        print("Source:", node.node.text[:150])# LlamaIndex Question 2
+        print("Source:", node.node.text[:150])
+# Employee benefits: I checked whether the retrieved text directly addressed the question.
+# The answer sounded confident, but I compared it with the source to check accuracy.
+# Security policies: I checked whether the retrieved text addressed the actual policies.
+# I was surprised that related information can be retrieved without fully answering a question.
+# LlamaIndex Question 2
 
 question = "What employee benefits does BrightLeaf offer?"
 
